@@ -1,15 +1,65 @@
+<!DOCTYPE html>
 <html>
 
-	<head>
+<head>
 	<meta charset="utf-8" />
 	<title>GoobHub pages</title>
-	</head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+	<!--<meta http-equiv="refresh" content="1"> -->
+	<script src="app.js"></script>
+	<script src="ctrl.js"></script>
+	<!-- <script src="script.js"></script> -->
+</head>
 
-	<body>
-		<h1>Testing this</h1>
-		<p>
-			This is a paragraph
-		</p>
-	</body>
+<body ng-app="app" ng-controller="ctrl">
+	<div class="container">
+
+		<div class ="row">
+			<div class="col-sm-4">
+				<h1>Cecil Lam</h1>
+			</div>
+		</div>
+
+		<div class="row">
+
+			<ul class="nav nav-pills nav-stacked col-md-3">
+				<li><a href="#info" data-toggle="tab">Info</a></li>
+				<li><a href="#resume" data-toggle="tab">Resume</a></li>
+				<li><a href="#projects" data-toggle="tab">Project(s)</a></li>
+			</ul>
+
+			<p><a href="#/">Main</a></p>
+
+			<ng-view>testing</ng-view>
+
+</div>
+
+	<h1 align="center">Testing this</h1>
+	<p align="center">
+		Lel i can just refresh to reload instead of using a framework
+	</p>
+	<div class="row">
+		<div class="col-sm-4">
+			<h3>Column 1</h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+			<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+		</div>
+		<div class="col-sm-4">
+			<h3>Column 2</h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+			<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+		</div>
+		<div class="col-sm-4">
+			<h3>Column 3</h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+			<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+		</div>
+	</div>
+</div>
+</body>
 
 </html>
