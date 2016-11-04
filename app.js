@@ -6,12 +6,12 @@ app.config(function($routeProvider) {
         templateUrl : "main.html"
     })
     .when("/info", {
-        templateUrl : "info.htm"
+        templateUrl : "info.html"
     })
-    // .when("/resume", {
-    //     templateUrl : "resume.htm"
-    // })
-    // .when("/projects", {
-    //     templateUrl : "projects.htm"
-    // });
+    .when("/resume", {
+        templateUrl : "resume.html"
+    })
+    .when("/projects", {
+        templateUrl : "projects.html"
+    });
 });
