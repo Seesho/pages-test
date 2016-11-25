@@ -2,14 +2,8 @@ var app = angular.module("app", ["ngRoute"]);
 
 app.config(function($routeProvider) {
     $routeProvider
-    .when("/", {
-        templateUrl : "main.html"
-    })
     .when("/home", {
         templateUrl : "main.html"
-    })
-    .when("/blog", {
-        templateUrl : "blog.html"
     })
     .when("/about", {
         templateUrl : "about.html"
@@ -19,8 +13,5 @@ app.config(function($routeProvider) {
     })
     .when("/projects", {
         templateUrl : "projects.html"
-    })
-    .otherwise( {
-      templateUrl: 'main.html'
-    } );
+    });
 });

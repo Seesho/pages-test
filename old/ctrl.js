@@ -1,4 +1,4 @@
-angular.module("app").controller("ctrl", function($scope) {
+app.controller("ctrl", function($scope) {
     $scope.firstName	= "John";
     $scope.lastName= "Doe";
     $scope.goob = "Goob";
