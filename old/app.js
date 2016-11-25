@@ -5,13 +5,7 @@ app.config(function($routeProvider) {
     .when("/", {
         templateUrl : "main.html"
     })
-    .when("/home", {
-        templateUrl : "main.html"
-    })
-    .when("/blog", {
-        templateUrl : "blog.html"
-    })
-    .when("/about", {
+    .when("/info", {
         templateUrl : "about.html"
     })
     .when("/resume", {
@@ -19,8 +13,5 @@ app.config(function($routeProvider) {
     })
     .when("/projects", {
         templateUrl : "projects.html"
-    })
-    .otherwise( {
-      templateUrl: 'main.html'
-    } );
+    });
 });

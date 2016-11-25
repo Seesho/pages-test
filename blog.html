@@ -1,0 +1,134 @@
+<h2>November 24, 2016 - Databases</h2>
+<p>
+  Starting to set up psql. Used homebrew to install it as all the other methods seemed to be really clunky.
+  Use createdb to make a database and psql &lt;database&gt; to open said database.
+  \d to show all tables and \l to show all databases. Not sure what template0 or template1 is at this point.
+  Next goal is to try and import the data from a file to the database:
+  http://stackoverflow.com/questions/2987433/how-to-import-csv-file-data-into-a-postgresql-table
+  This is probably extra stuff but it's still pretty cool for shell scripting.
+  http://www.manniwood.com/postgresql_and_bash_stuff/
+
+  Website related: Thinking about embedding videos instead of just linking them.
+  https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Other_embedding_technologies
+  Youtube videos already have an html embed link so I can just add them directly.
+</p>
+
+<h2>November 19, 2016 - Python and HackerRank pt. 2</h2>
+<p>
+  Less formatting, just things I was working on today.
+  No Idea!
+  by sandyeep
+  http://stackoverflow.com/questions/2600191/how-can-i-count-the-occurrences-of-a-list-item-in-python
+  http://stackoverflow.com/questions/12897374/get-unique-values-from-a-list-in-python
+  http://stackoverflow.com/questions/6130768/return-none-if-dictionary-key-is-not-available
+  This makes me sad:
+  http://stackoverflow.com/questions/2632677/python-integer-incrementing-with
+  Ultimately caved and looked in the discussions
+  <span>n, m = input().split()
+#print(n, m)
+#nums = input().split()
+nums = [int(x) for x in input().split()]
+a = set([int(y) for y in input().split()])
+b = set([int(z) for z in input().split()])
+happiness = 0
+#Naive, straightforward approach
+#for i in range(0,int(n)):
+#    for j in range(0,int(m)):
+#        if(all[i] == a[j]):
+#            happiness+=1
+#        if(all[i] == b[j]):
+#            happiness-=1
+
+#still wrong
+#happy = sum([a.count(x) for x in set(all)])
+#unhappy = sum([b.count(x) for x in set(all)])
+#happiness = happiness+happy-unhappy
+
+#still too slow, why?
+#aCount = dict((x,a.count(x)) for x in set(nums))
+#bCount = dict((x,b.count(x)) for x in set(nums))
+#print(aCount.get('0'), bCount.get('5'))
+#x = 1 + aCount.get('0',1336)
+#print(x)
+#for x in nums:
+    #happiness+=aCount.get(x,0)
+    #happiness-=bCount.get(x,0)
+
+happiness = [0+1 if x in a else 0-1 if x in b else 0+0 for x in nums]
+
+print(sum(happiness))
+    </span>
+</p>
+<h4>November 19, 2016 - Python and HackerRank</h4>
+<p>
+  Just logging a quick documentation about Python being pretty cool. Basically the task online was
+  average using the set function. <a href="http://stackoverflow.com/questions/7368789/convert-all-strings-in-a-list-to-int">
+  This</a>
+  helped me read in a line as a list of ints and proceed with the rest of the practice. Final result is<br />
+  <span class = "col-md-12">
+    count = int(input())<br />
+    nums = input().split()<br />
+    results = list(map(int, set(nums)))<br />
+    print(sum(results)/len(results))<br />
+  </span>
+  Also another idea: if I'm going to write blogs every so often, I should have a way to make it from my website instead
+  of going into the text editor everytime I want to document something. Other things that come to mind as of now:
+  <ul>
+    <li>
+      Make posts collapsable
+    </li>
+    <li>
+      Have the menu change when the window is smaller than a certain size (for ease of access and OCD)
+    </li>
+    <li>
+      Change the white background
+    </li>
+  </ul>
+  That's all for today! Busy with schoolwork.
+</p>
+
+<h4>November 15, 2016 - Small edits, plans for the future</h4>
+<p>
+  Tinkered around with it a bit more and discovered the .otherwise function for the routeProvider. Now I can have
+  it default to a certain page if anything goes wrong. I used this
+  <a href="http://www.w3schools.com/angular/angular_routing.asp">guide</a> from w3schools to figure out
+  how to default to a certain route. And then this
+  <a href="http://stackoverflow.com/questions/20087627/how-to-create-separate-angularjs-controller-files">post</a>
+  helped me figure out how to properly set up my controller in a different file.
+  This
+  <a href="https://www.youtube.com/watch?v=YFsduR7mBfY">video</a>
+  is just for reference as I plan to implement a search bar, but am unsure if what it will be used for at this point.
+  <br />
+  I wanted to link all the videos/guides/stackoverflow posts that I found useful in this section as well as what I
+  learned from it just as a record for what I learned and how much information there is out there if you just
+  figure out what you're looking for. Anyways this is a short post due to all the school work that needs doing
+  in the meantime. Hopefully I'll have more time to work on this website as well as other projects to include
+  on this website. I'm still developing this website locally before I host it online on GitHub because I still have
+  plenty to work on and I need to see the changes faster than GitHub can afford to update. Unless there is a way
+  to refresh their cache faster? I'm not sure but this is the way it goes for now.
+</p>
+
+
+<h4>November 12, 2016 - Building out this web page is a pain in the butt</h4>
+<p>
+  Initially I just wanted to build a website with angular and bootstrap because that's what I'm familiar
+  with at my work. However I ran into some issues when trying to set it up locally on my machine. I had GitHub
+  pages set up for a while now for when I was ready to push my website and just host it online. However, I ran
+  into issues when trying to link my pages properly in order to actually test angular's ability to load other
+  pages preemptively.<br />
+  I checked the developer console to find there is an issue in trying to resolve where the pages were exactly
+  routing to when opened independently. So my next course of action was to try to put it on a local server and
+  pray that it would fix the issue where I could actually load my other pages from the main page.<br />
+  Through this I had to do some digging around for information about Apache. I watched a few videos and read
+  through a few guides about to get all the proper configurations set up correctly. It took a while because
+  all the information had some permutation of the other and I just needed the right settings for my OS
+  (I'm running OS X Yosemite still because I don't like El Capitan). Anyway, it took way longer than I think
+  it should have in order to just get the local server working initially. My troubles for this didn't end there
+  as I was trying to just test the pages as I was editing them, but only the main page was responsive when
+  updating and refreshing. Turns out that chrome cached an old version of my other web pages so I guess I'm
+  developing in incognito until another option comes to mind.<br />
+  Also since I'm labelling these with dates, I could incorporate like a search function or sorting blogs by date kind
+  of thing where clicking on it will open it up. Just more thoughts on how far this web page can go.
+</p>
+
+<p>{{msg}}</p>
