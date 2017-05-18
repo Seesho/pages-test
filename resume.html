@@ -1,10 +1,11 @@
 
-<div ng-controller="resume">
+<div>
   <div>
     <span class="col-md-4">Name: Cecil Lam</span>
     <span class="col-md-4">Email: cglam@ucdavis.edu</span>​
     <span class="col-md-4">Phone: (510)593-6220</span>​
   </div>
+
   <div>
     <a class="fa fa-linkedin-square" href="https://www.linkedin.com/in/cglam"></a>
     <a class="fa fa fa-github-square" href="https://www.github.com/seesho"></a>
@@ -63,93 +64,19 @@
   </ul>
 </div>
 
-<div>
-  <span class="col-md-12"><b>COURSEWORK:</b></span>
+<div class="col-md-12">
+  <label >COURSEWORK:</label>
   <ul>
-    <li>
-      Data Structures and Programming
-      <ul>
-        <li>
-          Designing and analyzing data structures; used C++
-        </li>
-      </ul>
-    </li>
-    <li>
-      Theory of Computation
-      <ul>
-        <li>
-          Studied formal languages, computability, complexity, reducibility
-        </li>
-      </ul>
-
-    </li>
-    <li>
-      Algorithm Design and Analysis
-      <ul>
-        <li>
-          Studied algorithm design techniques: divide-conquer, greedy, dynamic programming
-        </li>
-      </ul>
-    </li>
-    <li>
-      Operating Systems and System Programming
-      <ul>
-        <li>
-          Built basic operating system using C++
-        </li>
-      </ul>
-
-    </li>
-    <li>
-      Computer Architecture
-      <ul>
-        <li>
-          Designed computer systems with Logisim
-        </li>
-      </ul>
-
-    </li>
-    <li>
-      Programming on Parallel Architectures
-      <ul>
-        <li>
-          Learned techniques using shared-memory and message-passing APIs such as OpenMP, MPI, and CUDA; primarily used R and C++
-        </li>
-      </ul>
-
-    </li>
-    <li>
-      Software Engineering
-      <ul>
-        <li>
-          Documented, fixed errors, and added features for a game code built on C++11
-        </li>
-      </ul>
-
-    </li>
-    <li>
-      Database Systems
-      <ul>
-        <li>
-          Studied database models, relational algebra, and query languages; used Python to interact with PostgreSQL
-        </li>
-      </ul>
-    </li>
-    <li>
-      Machine Learning
-      <ul>
-        <li>
-          Learned to build different statistical models for predicting outputs; used Octave and Python
-        </li>
-      </ul>
+    <li ng-repeat="(k,v) in coursework">
+      {{k}} : {{v}}
     </li>
   </ul>
 </div>
 
-<div>
-  <b class="col-md-12">SKILLS:</b><br />
+<div class="col-md-12">
+  <label >SKILLS:</label>
   Proficiency in the following:
-  <ul class="col-md-12">
+  <ul>
     <li>
       Programming Languages: C++, Python, C, JavaScript, Java, R
     </li>

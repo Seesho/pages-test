@@ -3,9 +3,10 @@
 
   </head>
   <body>
+
     <h3>Money tracker</h3>
 
-    <div id="moneyInput">
+    <div>
       <select>
         <option>
           $
@@ -16,5 +17,39 @@
     </div>
 
     {{amount | currency:"USD$"}}
+
+    {{transactions}}
+
+    <table class="table">
+    <thead>
+      <tr>
+        <th>Selected</th>
+        <th>Amount</th>
+        <th>Description</th>
+        <th>Category</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="t in transactions">
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+      </tr>
+    </tbody>
+  </table>
+
   </body>
 </html>
