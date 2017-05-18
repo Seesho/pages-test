@@ -14,6 +14,9 @@
 		<!-- Needed for ngRoute -->
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-route.js"></script>
 
+		<!-- D3 -->
+		<script src="https://d3js.org/d3.v4.min.js"></script>
+
 		<!--<meta http-equiv="refresh" content="1"> -->
 		<script src="app.js"></script>
 		<script src="ctrl.js"></script>
@@ -31,11 +34,11 @@
 			<div class="row">
 
 				<ul class="nav nav-pills nav-stacked col-md-3">
-					<li><a href="#home" data-toggle="tab">Home</a></li>
-					<li><a href="#resume" data-toggle="tab">Resume</a></li>
-					<li><a href="#projects" data-toggle="tab">Projects</a></li>
-					<li><a href="#about" data-toggle="tab">About</a></li>
-					<li><a href="#tracker" data-toggle="tab">Tracker</a></li>
+					<li ng-class="{active: $route.current.activetab == 'home'}"><a href="#home" data-toggle="tab">Home</a></li>
+					<li ng-class="{active: $route.current.activetab == 'resume'}"><a href="#resume" data-toggle="tab">Resume</a></li>
+					<li ng-class="{active: $route.current.activetab == 'projects'}"><a href="#projects" data-toggle="tab">Projects</a></li>
+					<li ng-class="{active: $route.current.activetab == 'about'}"><a href="#about" data-toggle="tab">About</a></li>
+					<li ng-class="{active: $route.current.activetab == 'tracker'}"><a href="#tracker" data-toggle="tab">Tracker</a></li>
 					<!-- <li><a href="#blog" data-toggle="tab">Blog</a></li> -->
 				</ul>
 

@@ -1,7 +1,8 @@
-angular.module('route').controller('ctrl', function($scope) {
+angular.module('route').controller('ctrl', function($scope, $route) {
     $scope.firstName	= 'John';
     $scope.lastName= 'Doe';
     $scope.goob = 'Goob';
+    $scope.$route = $route;
 });
 
 angular.module('route').controller('tracker', function($scope) {
