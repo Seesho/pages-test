@@ -28,16 +28,16 @@
   <div>
     <select ng-model="currency" ng-init="currency=currencies[0]" ng-options="currency for currency in currencies">
     </select>
-
-    <!-- {{currency}} -->
-    <!-- {{currencies}} -->
-    <input type="number" ng-model="amount"/>
-    <button ng-click="addTransaction(currency,amount,'test','test')">Add</button>
+    <input type="number" ng-model="amount" placeholder="Amount"/>
+    <input type="text" ng-model="description" placeholder="Description"/>
+    <select ng-model="category" ng-init="category=categories[0]" ng-options="category for category in categories"></select>
+    <button ng-click="addTransaction(currency,amount,description,category)">Add</button>
   </div>
 
-  {{amount | currency:"USD$"}}
-
-  {{transactions}}
+  <div id="debug" ng-if="">
+    {{amount | currency:"USD$"}}
+    {{transactions}}
+  </div>
 
   </body>
 </html>
