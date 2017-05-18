@@ -6,14 +6,23 @@ angular.module("route").controller("ctrl", function($scope) {
 
 angular.module("route").controller("tracker", function($scope) {
 
-  $scope.transaction = {
-    checked : false,
+  $scope.currencies = ['$', 'euro', 'yen'];
+
+  $scope.transactions = [{
+    checked : true,
     amount : 1,
     description : "Sample",
     category : "General"
-  };
+  }];
 
-  $scope.transactions = [$scope.transaction];
+  $scope.addTransaction = function(curType, amt, desc, cat){
+    $scope.amount = "";
+    $scope.transactions.push({
+        // checked : false,
+        amount : (curType + amt),
+        description : desc,
+        category : cat});
+  };
 
 });
 

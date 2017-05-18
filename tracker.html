@@ -6,20 +6,6 @@
 
     <h3>Money tracker</h3>
 
-    <div>
-      <select>
-        <option>
-          $
-        </option>
-      </select>
-      <input type="number" ng-model="amount"/>
-      <button>Add</button>
-    </div>
-
-    {{amount | currency:"USD$"}}
-
-    {{transactions}}
-
     <table class="table">
     <thead>
       <tr>
@@ -31,25 +17,27 @@
     </thead>
     <tbody>
       <tr ng-repeat="t in transactions">
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
+        <td><input type="checkbox" ng-model="t.checked"></td>
+        <td>{{t.amount}}</td>
+        <td>{{t.description}}</td>
+        <td>{{t.category}}</td>
       </tr>
     </tbody>
   </table>
+
+  <div>
+    <select ng-model="currency" ng-init="currency=currencies[0]" ng-options="currency for currency in currencies">
+    </select>
+
+    <!-- {{currency}} -->
+    <!-- {{currencies}} -->
+    <input type="number" ng-model="amount"/>
+    <button ng-click="addTransaction(currency,amount,'test','test')">Add</button>
+  </div>
+
+  {{amount | currency:"USD$"}}
+
+  {{transactions}}
 
   </body>
 </html>
