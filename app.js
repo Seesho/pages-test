@@ -3,7 +3,8 @@ var app = angular.module("app", ["ngRoute"]);
 app.config(function($routeProvider) {
     $routeProvider
     .when("/", {
-        templateUrl : "main.html"
+        templateUrl : "main.html",
+        controller : "redirect"
     })
     .when("/home", {
         templateUrl : "main.html"
@@ -20,7 +21,13 @@ app.config(function($routeProvider) {
     .when("/projects", {
         templateUrl : "projects.html"
     })
+    .when("/tracker", {
+        templateUrl : "tracker.html",
+        controller : "tracker"
+    })
     .otherwise( {
-      templateUrl: 'main.html'
+      templateUrl: "main.html",
+      controller : "redirect"
     } );
+
 });

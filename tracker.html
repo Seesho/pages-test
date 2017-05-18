@@ -1,0 +1,20 @@
+<html>
+  <head>
+
+  </head>
+  <body>
+    <h3>Money tracker</h3>
+
+    <div id="moneyInput">
+      <select>
+        <option>
+          $
+        </option>
+      </select>
+      <input type="number" ng-model="amount"/>
+      <button>Add</button>
+    </div>
+
+    {{amount | currency:"USD$"}}
+  </body>
+</html>

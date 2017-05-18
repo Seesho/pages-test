@@ -4,6 +4,10 @@ angular.module("app").controller("ctrl", function($scope) {
     $scope.goob = "Goob";
 });
 
-// $scope.changeTab = function(tab) {
-//     $scope.view_tab = tab;
-// }
+angular.module("app").controller("tracker", function($scope) {
+
+});
+
+angular.module("app").controller("redirect", function($scope, $location){
+    $location.path('/home');
+});
