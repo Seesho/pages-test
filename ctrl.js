@@ -12,6 +12,7 @@ angular.module('route').controller('tracker', function($scope) {
 
   $scope.transactions = [{
     checked : true,
+    currency : '$',
     amount : 1,
     description : 'Sample',
     category : 'General'
@@ -22,7 +23,8 @@ angular.module('route').controller('tracker', function($scope) {
     $scope.description = '';
     $scope.transactions.push({
         checked : false,
-        amount : curType + (amt ? amt : 0),
+        currency : curType,
+        amount : (amt ? amt : 0),
         description : (desc ? desc : 'N/A'),
         category : cat});
   };
