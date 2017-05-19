@@ -3,6 +3,7 @@ angular.module('route').controller('tracker', function($scope) {
   $scope.currencies = ['$', 'euro', 'yen'];
   $scope.categories = ['Food', 'Housing', 'Transportation']
 
+
   $scope.transactions = [{
     selected : true,
     currency : '$',
@@ -34,6 +35,17 @@ angular.module('route').controller('tracker', function($scope) {
       $scope.orderReverse = false;
     }
   };
+
+  $scope.calcTotal = function(){
+    $scope.total = 0;
+    for (var i = 0; i < $scope.transactions.length; i++) {//don't use for in otherwise it just returns indices
+      // console.log($scope.transactions[i].amount);
+      if($scope.transactions[i].selected == true){
+        $scope.total += $scope.transactions[i].amount;
+      }
+    }
+  }
+  $scope.calcTotal();
 
 
 });

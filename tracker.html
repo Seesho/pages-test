@@ -15,13 +15,17 @@
         </thead>
         <tbody>
           <tr ng-repeat="t in transactions | orderBy:ordering:orderReverse">
-            <td class="col-md-1"><input type="checkbox" ng-model="t.selected"></td>
+            <td ng-click="calcTotal()" class="col-md-1"><input type="checkbox" ng-model="t.selected"></td>
             <td class="col-md-1">{{t.currency}}{{t.amount}}</td>
             <td class="col-md-8">{{t.description}}</td>
             <td class="col-md-2">{{t.category}}</td>
           </tr>
         </tbody>
       </table>
+    </div>
+
+    <div>
+      Total: ${{total}}
     </div>
 
     <div id="inputDiv">
@@ -42,10 +46,18 @@
       * CUSTOMIZING CATEGORY, CURRENCY, ETC.
       * SELECT FROM PREVIOUSLY ENTERED TEXT ENTRIES
       * ENTER TO SUBMIT AN ENTRY
+      * SHORT DESC ON TABLE VIEW
+      * MODAL WINDOW POP UP TO VIEW MORE DETAILS
+      * ADD CARETS TO DISPLAY WHICH WAY IT'S SORTING
+      * TOTAL OF SELECTED
       -->
       {{amount | currency:"USD$"}} <br />
       {{transactions}} <br />
       {{ordering}}:{{orderReverse}} <br />
+      <div>
+        {{t.amount}}<br />
+      </div>
+
     </div>
   </body>
 </html>
