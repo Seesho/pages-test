@@ -1,43 +1,51 @@
 <html>
   <head>
-
   </head>
   <body>
-
     <h3>Money tracker</h3>
+    <div id="transactionTable">
+      <table class="table">
+        <thead>
+          <tr>
+            <th ng-click="selectOrder('selected')">Selected</th>
+            <th ng-click="selectOrder('amount')">Amount</th>
+            <th ng-click="selectOrder('description')">Description</th>
+            <th ng-click="selectOrder('category')">Category</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="t in transactions | orderBy:ordering:orderReverse">
+            <td class="col-md-1"><input type="checkbox" ng-model="t.selected"></td>
+            <td class="col-md-1">{{t.currency}}{{t.amount}}</td>
+            <td class="col-md-8">{{t.description}}</td>
+            <td class="col-md-2">{{t.category}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-    <table class="table">
-    <thead>
-      <tr>
-        <th>Selected</th>
-        <th>Amount</th>
-        <th>Description</th>
-        <th>Category</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="t in transactions | orderBy:['-amount.length', 'amount']">
-        <td><input type="checkbox" ng-model="t.checked"></td>
-        <td>{{t.currency}}{{t.amount}}</td>
-        <td>{{t.description}}</td>
-        <td>{{t.category}}</td>
-      </tr>
-    </tbody>
-  </table>
+    <div id="inputDiv">
+      <select ng-model="currency" ng-init="currency=currencies[0]" ng-options="currency for currency in currencies">
+      </select>
+      <input type="number" step="0.01" ng-model="amount" placeholder="Amount"/>
+      <input type="text" ng-model="description" placeholder="Description"/>
+      <select ng-model="category" ng-init="category=categories[0]" ng-options="category for category in categories"></select>
+      <button ng-click="addTransaction(currency,amount,description,category)">Add</button>
+    </div>
 
-  <div>
-    <select ng-model="currency" ng-init="currency=currencies[0]" ng-options="currency for currency in currencies">
-    </select>
-    <input type="number" step="0.01" ng-model="amount" placeholder="Amount"/>
-    <input type="text" ng-model="description" placeholder="Description"/>
-    <select ng-model="category" ng-init="category=categories[0]" ng-options="category for category in categories"></select>
-    <button ng-click="addTransaction(currency,amount,description,category)">Add</button>
-  </div>
-
-  <div id="debug" ng-if="">
-    {{amount | currency:"USD$"}}
-    {{transactions}}
-  </div>
-
+    <div id="debug" ng-if="">
+      <!-- TODO:
+      * ADD DATES
+      * REMOVE ABILITY
+      * SORTING FOR OTHER FIELDS
+      * FILTERING BASED ON CATEGORY
+      * CUSTOMIZING CATEGORY, CURRENCY, ETC.
+      * SELECT FROM PREVIOUSLY ENTERED TEXT ENTRIES
+      * ENTER TO SUBMIT AN ENTRY
+      -->
+      {{amount | currency:"USD$"}} <br />
+      {{transactions}} <br />
+      {{ordering}}:{{orderReverse}} <br />
+    </div>
   </body>
 </html>

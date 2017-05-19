@@ -5,32 +5,6 @@ angular.module('route').controller('ctrl', function($scope, $route) {
     $scope.$route = $route;
 });
 
-angular.module('route').controller('tracker', function($scope) {
-
-  $scope.currencies = ['$', 'euro', 'yen'];
-  $scope.categories = ['Food', 'Housing', 'Transportation']
-
-  $scope.transactions = [{
-    checked : true,
-    currency : '$',
-    amount : 1,
-    description : 'Sample',
-    category : 'General'
-  }];
-
-  $scope.addTransaction = function(curType, amt, desc, cat){
-    $scope.amount = '';
-    $scope.description = '';
-    $scope.transactions.push({
-        checked : false,
-        currency : curType,
-        amount : (amt ? amt : 0),
-        description : (desc ? desc : 'N/A'),
-        category : cat});
-  };
-
-});
-
 angular.module('route').controller('redirect', function($scope, $location){
     $location.path('/home');
 });
