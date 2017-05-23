@@ -1,9 +1,12 @@
-angular.module('route').controller('tracker', function($scope) {
+angular.module('route').controller('tracker', function($scope, $cookies) {
+
 
 // VARIABLE DECLARATIONS
   $scope.currencies = ['$', 'euro', 'yen'];
   $scope.categories = ['Food', 'Housing', 'Transportation']
-  $scope.ordering =
+  $scope.ordering = 'date';
+  $scope.orderReverse = false;
+  $scope.total = 0;
 
   $scope.transactions = [{
     date : new Date(),
@@ -15,6 +18,13 @@ angular.module('route').controller('tracker', function($scope) {
   }];
 
   $scope.deletedTransactions = [];
+
+  if($cookies.getObject('storage')){
+    $scope.transactions = $cookies.getObject('storage');
+  }
+  if($cookies.getObject('deleted')){
+    $scope.deletedTransactions = $cookies.getObject('deleted');
+  }
 
 // FUNCTION DECLARATIONS
 
@@ -29,6 +39,7 @@ angular.module('route').controller('tracker', function($scope) {
         amount : (amt ? amt : 0),
         description : (desc ? desc : 'N/A'),
         category : cat});
+    $scope.calcTotal();
   };
 
 // HANDLES THE ORDERBY VALUE OF THE TABLE
@@ -43,10 +54,11 @@ angular.module('route').controller('tracker', function($scope) {
       }
       $scope.orderReverse = false;
     }
+    $scope.calcTotal();
   };
 
 // CALCULATES RUNNING TOTAL OF ALL THE SELECTED COLUMNS
-  $scope.calcTotal = function(){
+  $scope.calcTotal = function(){ //using this as kind of an update function at the moment
     $scope.total = 0;
     for (var i = 0; i < $scope.transactions.length; i++) {//don't use for in otherwise it just returns indices
       // console.log($scope.transactions[i].amount);
@@ -54,8 +66,9 @@ angular.module('route').controller('tracker', function($scope) {
         $scope.total += $scope.transactions[i].amount;
       }
     }
+    $cookies.putObject('storage', $scope.transactions);
+    $cookies.putObject('deleted', $scope.deletedTransactions);
   }
-  $scope.calcTotal();
 
   $scope.selectAll = function(){
     for(var i = 0; i < $scope.transactions.length; i++){
@@ -81,6 +94,17 @@ angular.module('route').controller('tracker', function($scope) {
     $scope.transactions = $scope.transactions.filter( function(t){
       return t.selected == false;
     });
+    $scope.calcTotal();
+  }
+
+  $scope.undoRemove = function(){
+    if($scope.deletedTransactions.length > 0){
+      var undo = $scope.deletedTransactions.pop();
+      for(var i = 0; i < undo.length; i++){
+        $scope.transactions.push(undo[i]);
+      }
+    }
+
     $scope.calcTotal();
   }
 
