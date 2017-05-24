@@ -1,0 +1,6 @@
+.editable {
+    cursor: pointer;
+}
+p{
+  cursor: auto;
+}

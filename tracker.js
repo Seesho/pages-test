@@ -111,5 +111,10 @@ angular.module('route').controller('tracker', function($scope, $cookies) {
     $scope.calcTotal();
   }
 
+  $scope.setModal = function(i, o){
+    // alert(i + JSON.stringify(o));
+    $scope.currIndex = i;
+    $scope.currTransaction = o;
+  }
 
 });
