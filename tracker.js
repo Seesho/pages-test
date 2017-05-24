@@ -1,9 +1,8 @@
 angular.module('route').controller('tracker', function($scope, $cookies) {
 
-
 // VARIABLE DECLARATIONS
   $scope.currencies = ['$', 'euro', 'yen'];
-  $scope.categories = ['Food', 'Housing', 'Transportation']
+  $scope.categories = ['Food', 'Housing', 'Transportation'];
   $scope.ordering = 'date';
   $scope.orderReverse = false;
   $scope.total = 0;
@@ -66,8 +65,12 @@ angular.module('route').controller('tracker', function($scope, $cookies) {
         $scope.total += $scope.transactions[i].amount;
       }
     }
-    $cookies.putObject('storage', $scope.transactions);
-    $cookies.putObject('deleted', $scope.deletedTransactions);
+
+    var expires = new Date();
+    expires.setDate(expires.getDate() + 1);
+
+    $cookies.putObject('storage', $scope.transactions, {'expires': expires});
+    $cookies.putObject('deleted', $scope.deletedTransactions, {'expires': expires});
   }
 
   $scope.selectAll = function(){
