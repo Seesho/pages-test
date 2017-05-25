@@ -2,7 +2,7 @@ angular.module('route').controller('tracker', function($scope, $cookies) {
 
 // VARIABLE DECLARATIONS
   $scope.currencies = ['$', 'euro', 'yen'];
-  $scope.categories = ['Food', 'Housing', 'Transportation'];
+  $scope.categories = ['General', 'Food', 'Housing', 'Transportation'];
   $scope.ordering = 'date';
   $scope.orderReverse = false;
   $scope.total = 0;
@@ -114,7 +114,23 @@ angular.module('route').controller('tracker', function($scope, $cookies) {
   $scope.setModal = function(i, o){
     // alert(i + JSON.stringify(o));
     $scope.currIndex = i;
-    $scope.currTransaction = o;
+    $scope.currTransaction = angular.copy(o);
+    // alert('hi');
+    $scope.currTransaction.date = new Date($scope.currTransaction.date);
+  }
+
+  $scope.saveChanges = function(){
+    // alert('hi');
+    if($scope.currTransaction.amount > 0){
+      $scope.transactions[$scope.currIndex].amount = $scope.currTransaction.amount;
+    }
+    else{
+      $scope.transactions[$scope.currIndex].amount = 0;
+    }
+    $scope.transactions[$scope.currIndex].category = $scope.currTransaction.category;
+    $scope.transactions[$scope.currIndex].description = $scope.currTransaction.description;
+    $scope.transactions[$scope.currIndex].date = $scope.currTransaction.date;
+    $scope.calcTotal();
   }
 
 });
