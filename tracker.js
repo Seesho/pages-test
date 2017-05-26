@@ -119,7 +119,6 @@ angular.module('route').controller('tracker', function($scope, $cookies) {
   }
 
   $scope.saveChanges = function(){
-
     if($scope.currTransaction.amount > 0){
       $scope.transactions[$scope.index].amount = $scope.currTransaction.amount;
     }
@@ -130,6 +129,13 @@ angular.module('route').controller('tracker', function($scope, $cookies) {
     $scope.transactions[$scope.index].description = $scope.currTransaction.description;
     $scope.transactions[$scope.index].date = $scope.currTransaction.date;
     $scope.calcTotal();
+  }
+
+  $scope.checkKeyPress = function($event){
+    var keyPress = $event.which || $event.keyCode;
+    if(keyPress === 13){
+      $scope.addTransaction($scope.currency, $scope.amount, $scope.description, $scope.category);
+    }
   }
 
 });
