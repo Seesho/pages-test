@@ -33,7 +33,7 @@ angular.module('route').controller('tracker', function($scope, $cookies) {
     $scope.description = '';
     $scope.transactions.push({
       date : new Date(),
-      selected : false,
+      selected : true,
       currency : curType,
       amount : (amt ? amt : 0),
       description : (desc ? desc : 'N/A'),
@@ -118,7 +118,7 @@ angular.module('route').controller('tracker', function($scope, $cookies) {
   }
 
   $scope.saveChanges = function(){
-    if($scope.currTransaction.amount > 0){
+    if($scope.currTransaction.amount){
       $scope.transactions[$scope.index].amount = $scope.currTransaction.amount;
     }
     else{
@@ -134,6 +134,14 @@ angular.module('route').controller('tracker', function($scope, $cookies) {
     var keyPress = $event.which || $event.keyCode;
     if(keyPress === 13){
       $scope.addTransaction($scope.currency, $scope.amount, $scope.description, $scope.category);
+    }
+  }
+
+  $scope.modalSaveChanges = function($event){
+    // alert('enter');
+    var keyPress = $event.which || $event.keyCode;
+    if(keyPress === 13){
+      $scope.saveChanges();
     }
   }
 

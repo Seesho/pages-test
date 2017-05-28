@@ -1,7 +1,7 @@
-.editable {
+.editable, th {
     cursor: pointer;
 }
-p{
+p {
   cursor: auto;
 }
 
@@ -21,9 +21,14 @@ p{
 }
 
 rect {
-  cursor: pointer;
+  /*cursor: pointer;*/
   stroke-width: 2;
 }
 rect.disabled {
   fill: transparent !important;
+}
+
+.btn-group-sm {
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
