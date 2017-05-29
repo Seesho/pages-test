@@ -1,46 +1,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8" />
-	<title>GoobHub pages</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
-	<!--<meta http-equiv="refresh" content="1"> -->
-	<script src="app.js"></script>
-	<script src="ctrl.js"></script>
-	<!-- <script src="script.js"></script> -->
+  <title>GoobHub pages</title>
+
+  <!-- Needed for angular  -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+
+  <!-- Needed for ngRoute -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-route.js"></script>
+
+  <!-- D3 -->
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+
+  <!-- Needed for ngCookies -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-cookies.js"></script>
+
+  <!-- Needed for bootstrap -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <!-- For responsiveness -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <!-- For glyph icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Local stuff -->
+  <!-- <meta http-equiv="refresh" content="1"> -->
+  <script src="app.js"></script>
+  <script src="ctrl.js"></script>
+  <script src="tracker.js"></script>
+  <link rel="stylesheet" href="style.css">
 </head>
 
-<body ng-app="app" ng-controller="ctrl">
-	<div class="container">
+<body ng-app="route" ng-controller="ctrl">
+  <div class="container">
+    <div class ="row">
+      <div class="col">
+        <h1>{{$route.current.activetab}}</h1>
+        <hr />
+      </div>
+    </div>
 
-		<div class ="row">
-			<div class="col-sm-4">
-				<h1>Cecil Lam</h1>
-			</div>
-		</div>
+    <div class="row">
 
-		<div class="row">
+      <ul class="nav nav-pills nav-stacked col-md-2">
+        <li ng-class="{active: $route.current.activetab == 'home'}"><a href="#home" data-toggle="tab">Home</a></li>
+        <li ng-class="{active: $route.current.activetab == 'projects'}"><a href="#projects" data-toggle="tab">Projects</a></li>
+        <li ng-class="{active: $route.current.activetab == 'resume'}"><a href="#resume" data-toggle="tab">Resume</a></li>
+        <li ng-class="{active: $route.current.activetab == 'about'}"><a href="#about" data-toggle="tab">About</a></li>
+        <li ng-class="{active: $route.current.activetab == 'tracker'}"><a href="#tracker" data-toggle="tab">Tracker</a></li>
+        <!-- <li><a href="#blog" data-toggle="tab">Blog</a></li> -->
+      </ul>
 
-			<ul class="nav nav-pills nav-stacked col-md-3">
-				<li><a href="#home" data-toggle="tab">Home</a></li>
-				<li><a href="#resume" data-toggle="tab">Resume</a></li>
-				<li><a href="#projects" data-toggle="tab">Projects</a></li>
-				<li><a href="#about" data-toggle="tab">About</a></li>
-				<!-- <li><a href="#blog" data-toggle="tab">Blog</a></li> -->
-
-			</ul>
-			<div class = "col-md-9">
-				<div class="ng-view"></div>
-			</div>
-
-
-		</div>
-</div>
+      <div class = "col-md-10">
+        <div class="ng-view"></div>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>

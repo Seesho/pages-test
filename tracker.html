@@ -1,0 +1,152 @@
+<html>
+  <head>
+
+  </head>
+  <body>
+
+    <div id="buttonsDiv" class="container-fluid">
+      <div class="row btn-group-sm">
+        <button ng-click="selectAll()"
+                class="btn btn-default">Select All</button>
+        <button ng-click="deselectAll()"
+                class="btn btn-default">Deselect All</button>
+      </div>
+      <div class="row btn-group-sm">
+        <button ng-click="removeSelected()"
+                class="btn btn-danger">Remove selected</button>
+        <button ng-click="undoRemove()"
+                class="btn btn-info">Undo remove</button>
+      </div>
+    </div>
+
+    <label>Search:</label>
+    <input ng-model="searchQuery" type="text" class="form-control"/>
+
+    <div id="transactionTable" class="table-responsive container-fluid">
+      <hr />
+      <div class="">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th ng-click="selectOrder('selected')">Selected<i ng-show="ordering=='selected'" class="fa fa-fw fa-sort"></i></th>
+              <th ng-click="selectOrder('amount')">Amount<i ng-show="ordering=='amount'" class="fa fa-fw fa-sort"></i></th>
+              <th ng-click="selectOrder('description')">Description<i ng-show="ordering=='description'" class="fa fa-fw fa-sort"></i></th>
+              <th ng-click="selectOrder('category')">Category<i ng-show="ordering=='category'" class="fa fa-fw fa-sort"></i></th>
+              <th ng-click="selectOrder('date')">Date<i ng-show="ordering=='date'" class="fa fa-fw fa-sort"></i></th>
+            </tr>
+            <tr>
+              <td>
+                <select ng-model="currency" ng-init="currency=currencies[0]" ng-keypress="checkKeyPress($event)"
+                        ng-options="currency for currency in currencies" class="form-control">
+                </select>
+              </td>
+              <td>
+                <input type="number" step="0.01" ng-model="amount" placeholder="Amount"
+                ng-keypress="checkKeyPress($event)" class="form-control"/>
+              </td>
+              <td>
+                <input type="text" ng-model="description" placeholder="Description"
+                ng-keypress="checkKeyPress($event)" class="form-control"/>
+              </td>
+              <td>
+                <select ng-model="category" ng-init="category=categories[0]" ng-keypress="checkKeyPress($event)"
+                        ng-options="category for category in categories" class="form-control">
+                </select>
+              </td>
+              <td>
+                <button ng-click="addTransaction(currency,amount,description,category)"
+                        type="button"
+                        class="btn btn-success">Add</button>
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="t in transactions | orderBy:ordering:orderReverse | filter : searchQuery" ng-click="setModal($index, t)">
+              <td class=""><input type="checkbox" ng-model="t.selected" ng-click="calcTotal()"></td>
+              <td class="editable" data-toggle="modal" data-target="#editTransaction"><p>{{t.currency}}{{t.amount}}</p></td>
+              <td class="editable" data-toggle="modal" data-target="#editTransaction"><p>{{t.description | limitTo : 50}}{{t.description.length > 50 ? '&hellip;' : ''}}</p></td>
+              <td class="editable" data-toggle="modal" data-target="#editTransaction"><p>{{t.category}}</p></td>
+              <td class="editable" data-toggle="modal" data-target="#editTransaction"><p>{{t.date | date:'MM-dd-yyyy'}}</p></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div ng-init="calcTotal()" class="">
+        Total: ${{total | number:2}}
+      </div>
+      <hr />
+    </div>
+
+
+
+    <!-- Modal -->
+    <div id="editTransaction" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Edit transaction</h4>
+          </div>
+          <div class="modal-body">
+            <label>Amount:</label>
+            <input class="form-control" ng-model='currTransaction.amount' ng-keypress="modalSaveChanges($event)"
+            type="number" step="0.01" placeholder="Amount"/>
+            <label>Description:</label>
+            <textarea class="form-control" ng-model='currTransaction.description'
+            type="text" placeholder="Description"> </textarea>
+            <label>Category:</label>
+            <select class="form-control" ng-model='currTransaction.category'
+            ng-options="category for category in categories" class="form-control"></select>
+            <label>Date:</label>
+            <input class="form-control" ng-model='currTransaction.date'
+            type="date"/>
+          </div>
+          <div class="modal-footer">
+            <button ng-click="saveChanges()" type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="debug" ng-if="">
+      <!-- TODO:
+      * FILTERING BASED ON CATEGORY
+      * CUSTOMIZING CATEGORY, CURRENCY, ETC.
+      * SELECT FROM PREVIOUSLY ENTERED TEXT ENTRIES
+      * SELECT COLOR SCHEME
+      * ADD CARETS TO DISPLAY WHICH WAY IT'S SORTING
+      * SHIFT CLICK TO SELECT MULTIPLE
+      * INCORPORATE EXPORTS TO CSV
+      -->
+
+      <!-- DONE:
+      * ENTER TO SUBMIT AN ENTRY
+      * ADD DATES
+      * REMOVE ABILITY
+      * SORTING FOR OTHER FIELDS
+      * SAVED DATA
+      * TOTAL OF SELECTED
+      * MODAL WINDOW POP UP TO VIEW MORE DETAILS
+      * SHORT DESC ON TABLE VIEW
+      -->
+      {{amount | currency:"USD$"}} <br />
+      CURRENT TRANSACTIONS: <br />
+      {{transactions}} <br />
+      {{ordering}}:{{orderReverse}} <br />
+      <div>
+        {{t.amount}}<br />
+      </div>
+      DELETED TRANSACTIONS: <br />
+      {{deletedTransactions}} <br />
+      TESTING: <br />
+      {{currTransaction}}
+      {{index}}
+    </div>
+
+    <div id="chart" class="col-md-12 text-center"></div>
+
+  </body>
+</html>

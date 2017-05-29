@@ -1,166 +1,67 @@
-<div>
-  <div>
-    <span class="col-md-4">Name: Cecil Lam</span>
-    <span class="col-md-4">Email: cglam@ucdavis.edu</span>​
-    <span class="col-md-4">Phone: (510)593-6220</span>​
+
+<div id="contactInfo" class="container-fluid">
+  <div class="row">
+    <div class="col-md-4">Name: Cecil Lam</div>
+    <div class="col-md-4">Email: cglam@ucdavis.edu</div>
+    <div class="col-md-4">Phone: (510)593-6220</div>
   </div>
-  <div>
-    <a class="fa fa-linkedin-square" href="https://www.linkedin.com"></a>
-    <a class="fa fa fa-github-square" href="https://www.github.com"></a>
+  <div class="row">
+    <div class="col-md-12">
+      <a class="fa fa-linkedin-square" href="https://www.linkedin.com/in/cglam"></a>
+      <a class="fa fa fa-github-square" href="https://www.github.com/seesho"></a>
+    </div>
+  </div>
+  <hr/>
+</div>
+
+<div id="details" class="container-fluid">
+  <div class="row">
+    <label class="col-md-2">EDUCATION:</label>
+    <div class="col-md-5">University of California, Davis</div>
+    <div class="col-md-5">Graduated March 2017</div>
   </div>
 
-  <hr />
+  <div class="row">
+    <div class="col-md-5 col-md-offset-2">Bachelor of Science, Computer Science</div>
+    <div class="col-md-5">GPA: 3.1</div>
+  </div>
+
+  <div class="row">
+    <label class="col-md-12">EXPERIENCE:</label>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">UC Davis IET:</div>
+    <div class="col-md-12 media-list">
+      <ul class="">
+        <li ng-repeat="(t,e) in experience">
+          <div class="">{{t}} {{e.date}}</div>
+          <ul>
+            <li ng-repeat="d in e.desc">
+              {{d}}
+            </li>
+          </ul>
+        </li>
+        <ul>
+      </ul>
+    </div>
+
+  <div class="row">
+    <label class="col-md-12">COURSEWORK:</label>
+    <ul>
+      <li class="col-md-12" ng-repeat="(k,v) in coursework">
+        {{k}} : {{v}}
+      </li>
+    </ul>
+  </div>
+
+  <div class="row">
+    <label class="col-md-12">SKILLS:</label>
+    <ul>
+      <li class="col-md-12" ng-repeat="(s,d) in skills">
+        {{s}} {{d}}
+      </li>
+    </ul>
+  </div>
+
 </div>
-
-<div>
-<span class="col-md-2"><b>EDUCATION:</b></span>
-<span class="col-md-5">University of California, Davis</span>
-<span class="col-md-5">Expected March 2017</span>
-</div>
-<div>
-  <span class="col-md-5 col-md-offset-2">Bachelor of Science, Computer Science</span>
-  <span class="col-md-5">GPA 3.121</span>
-</div>
-<div>
-  <span class="col-md-12"><b>EXPERIENCE:</b></span>
-</div>
-<div>
-  <span class="col-md-12">UC Davis IET</span>
-  <ul style="list-style-type:none">
-    <li>
-      <span>Student Application Developer (November 2015 – Current)</span>
-    </li>
-
-    <li>
-      <ul class="col-md-12" style="list-style-type:none">
-        <li>
-          Developed front-end and back-end for ServiceNow (PaaS) using AngularJS
-        </li>
-        <li>
-          Integrated other applications through their APIs using REST and SOAP web services
-        </li>
-      </ul>
-    </li>
-
-    <li>
-        <span>Training and Documentation Analyst (June 2015 - November 2015)</span>
-    </li>
-    <li>
-      <ul class="col-md-12" style="list-style-type:none">
-        <li>
-          Web developing for a user-friendly experience
-        </li>
-        <li>
-          Wrote technical documentation and training scripts for quality assurance
-        </li>
-        <li>
-          Created training resources and knowledge articles
-        </li>
-      </ul>
-    </li>
-
-  </ul>
-</div>
-
-<div>
-  <span class="col-md-12"><b>COURSEWORK:</b></span>
-  <ul>
-    <li>
-      Data Structures and Programming
-      <ul>
-        <li>
-          Designing and analyzing data structures; used C++
-        </li>
-      </ul>
-    </li>
-    <li>
-      Theory of Computation
-      <ul>
-        <li>
-          Studied formal languages, computability, complexity, reducibility
-        </li>
-      </ul>
-
-    </li>
-    <li>
-      Algorithm Design and Analysis
-      <ul>
-        <li>
-          Studied algorithm design techniques: divide-conquer, greedy, dynamic programming
-        </li>
-      </ul>
-    </li>
-    <li>
-      Operating Systems and System Programming
-      <ul>
-        <li>
-          Built basic operating system using C++
-        </li>
-      </ul>
-
-    </li>
-    <li>
-      Computer Architecture
-      <ul>
-        <li>
-          Designed computer systems with Logisim
-        </li>
-      </ul>
-
-    </li>
-    <li>
-      Programming on Parallel Architectures
-      <ul>
-        <li>
-          Learned techniques using shared-memory and message-passing APIs such as OpenMP, MPI, and CUDA; primarily used R and C++
-        </li>
-      </ul>
-
-    </li>
-    <li>
-      Software Engineering
-      <ul>
-        <li>
-          Documented, fixed errors, and added features for a game code built on C++11
-        </li>
-      </ul>
-
-    </li>
-    <li>
-      Database Systems
-      <ul>
-        <li>
-          Studied database models, relational algebra, and query languages; used Python to interact with PostgreSQL
-        </li>
-      </ul>
-    </li>
-    <li>
-      Machine Learning
-      <ul>
-        <li>
-          Learned to build different statistical models for predicting outputs; used Octave and Python
-        </li>
-      </ul>
-    </li>
-  </ul>
-</div>
-
-<div>
-  <b class="col-md-12">SKILLS:</b><br />
-  Proficiency in the following:
-  <ul class="col-md-12">
-    <li>
-      Programming Languages: C++, Python, C, JavaScript, Java, R
-    </li>
-    <li>
-      Frameworks: jQuery, AngularJS, Bootstrap, Node.js
-    </li>
-    <li>
-      Operating Systems: Windows, Mac OS, Linux
-    </li>
-  </ul>
-</div>
-<!-- 
-<div>
-  {{msg}}
-</div> -->
