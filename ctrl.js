@@ -23,9 +23,9 @@ angular.module('route').controller('resume', function($scope){
     };
 
     $scope.experience = {
-      'ServiceNow Application Developer' : {'title' : 'test', 'date' : '(November 2015 - Current)', 'desc' : ['Developed front-end and back-end applications on ServiceNow using AngularJS',
-        'Integrated other applications using REST and SOAP web services',
-        'Operated under Agile methodology and Scrum framework',
+      'ServiceNow Application Developer' : {'title' : 'test', 'date' : '(November 2015 - Current)', 'desc' : ['Developed front-end pages in AngularJS and Bootstrap',
+        'Cleaned data and mapped to load in correct fields',
+        'Integrated Bomgar using REST and SOAP web services',
         'Analyzed customer requirements and developed features through user stories'
       ]},
       'Training and Documentation Analyst' : {'title' : '', 'date' : '(June 2015 - November 2015)', 'desc' : ['Wrote technical documentation and training scripts for quality assurance',
@@ -36,6 +36,7 @@ angular.module('route').controller('resume', function($scope){
       'Strong academic background' : 'in Data Structures and Algorithms',
       'Proficient in Object Oriented Programming' : '(C++, Java, Python)',
       'Experienced in stack development' : '(HTML, CSS, Javascript, AngularJS, Bootstrap)',
-      'Experienced in version control' : '(Git)'
+      'Experienced in version control' : '(Git)',
+      'Familiar with' : 'Agile methodlogy and Scrum framework'
     };
 });

@@ -47,6 +47,16 @@
     </div>
 
   <div class="row">
+    <label class="col-md-12">SKILLS:</label>
+    <ul>
+      <li class="col-md-12" ng-repeat="(s,d) in skills">
+        {{s}} {{d}}
+      </li>
+    </ul>
+  </div>
+
+
+  <div class="row">
     <label class="col-md-12">COURSEWORK:</label>
     <ul>
       <li class="col-md-12" ng-repeat="(k,v) in coursework">
@@ -55,13 +65,5 @@
     </ul>
   </div>
 
-  <div class="row">
-    <label class="col-md-12">SKILLS:</label>
-    <ul>
-      <li class="col-md-12" ng-repeat="(s,d) in skills">
-        {{s}} {{d}}
-      </li>
-    </ul>
-  </div>
 
 </div>
