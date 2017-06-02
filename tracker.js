@@ -150,8 +150,8 @@ angular.module('route').controller('tracker', function($scope, $cookies) {
   }
 
   $scope.exportData = function(){
-    // var exp = "sep=,\n";
-    alert(JSON.stringify($scope.transactions));
+    var exp = "sep=,\n";
+    // alert(JSON.stringify($scope.transactions));
     for(var i = 0; i < $scope.transactions.length; i++){
       // alert(JSON.stringify($scope.transactions[i]));
       exp += JSON.stringify($scope.transactions[i]) + "\n";
